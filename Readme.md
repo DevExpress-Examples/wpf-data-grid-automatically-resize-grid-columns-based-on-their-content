@@ -2,7 +2,7 @@
 *Files to look at*:
 
 * [GridControlFitBehavior.cs](./CS/GridControlFitBehavior.cs) (VB: [GridControlFitBehavior.vb](./VB/GridControlFitBehavior.vb))
-* **[MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))**
+* **[MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))**
 * [MainWindow.xaml.cs](./CS/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/MainWindow.xaml.vb))
 * [Task.cs](./CS/Task.cs) (VB: [Task.vb](./VB/Task.vb))
 * [ViewModel.cs](./CS/ViewModel.cs) (VB: [ViewModel.vb](./VB/ViewModel.vb))
