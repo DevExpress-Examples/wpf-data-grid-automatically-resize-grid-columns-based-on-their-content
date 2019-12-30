@@ -10,89 +10,116 @@ using System.Text;
 
 namespace E2042 {
 
-    public class GridControlFitBehavior : Behavior<GridControl> {
+    public class GridControlFitBehavior : Behavior<GridControl>
+    {
 
-        protected override void OnAttached() {
+        protected GridControl Grid { get { return AssociatedObject; } }
+        protected TableView View { get { return Grid.View as TableView; } }
+        protected override void OnAttached()
+        {
             base.OnAttached();
-            this.AssociatedObject.ItemsSourceChanged += AssociatedObject_ItemsSourceChanged;
-            this.AssociatedObject.Loaded += AssociatedObject_Loaded;
+            if (Grid.ItemsSource != null)
+            {
+                SubscribeItemChanged(Grid.ItemsSource);
+                SubscribeCollectionChanged(Grid.ItemsSource);
+            }
+            Grid.ItemsSourceChanged += ItemsSourceChanged;
+            Grid.Loaded += Loaded;
         }
 
-        void AssociatedObject_Loaded(object sender, System.Windows.RoutedEventArgs e) {
-            var collection = this.AssociatedObject.ItemsSource;
-            this.AssociatedObject.ItemsSource = null;
-            this.AssociatedObject.ItemsSource = collection;
-            if((this.AssociatedObject.View as TableView) != null)
-                (this.AssociatedObject.View as TableView).BestFitColumns();
+        void Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            if (View != null)
+                View.BestFitColumns();
         }
 
-        protected override void OnDetaching() {
-            this.UnSubscribeCollectionChanged(this.AssociatedObject.ItemsSource);
-            this.UnSubscribeItemChanged(this.AssociatedObject.ItemsSource);
-            this.AssociatedObject.ItemsSourceChanged -= AssociatedObject_ItemsSourceChanged;
-            this.AssociatedObject.Loaded -= AssociatedObject_Loaded;
+        protected override void OnDetaching()
+        {
+            UnSubscribeCollectionChanged(Grid.ItemsSource);
+            UnSubscribeItemChanged(Grid.ItemsSource);
+            Grid.ItemsSourceChanged -= ItemsSourceChanged;
+            Grid.Loaded -= Loaded;
             base.OnDetaching();
         }
 
-        void AssociatedObject_ItemsSourceChanged(object sender, ItemsSourceChangedEventArgs e) {
-            if(e.OldItemsSource != null) {
+        void ItemsSourceChanged(object sender, ItemsSourceChangedEventArgs e)
+        {
+            if (e.OldItemsSource != null)
+            {
                 UnSubscribeItemChanged(e.OldItemsSource);
                 UnSubscribeCollectionChanged(e.OldItemsSource);
             }
-            if(e.NewItemsSource != null) {
+            if (e.NewItemsSource != null)
+            {
                 SubscribeItemChanged(e.NewItemsSource);
                 SubscribeCollectionChanged(e.NewItemsSource);
             }
-            if((this.AssociatedObject.View  as TableView)!= null)
-                (this.AssociatedObject.View as TableView).BestFitColumns();
+            DoBestFit();
         }
 
+        private void DoBestFit()
+        {
+            if (View != null)
+                View.BestFitColumns();
+        }
 
-        public void SubscribeCollectionChanged(object source) {
+        public void SubscribeCollectionChanged(object source)
+        {
             var notifyCollection = source as INotifyCollectionChanged;
-            if(notifyCollection != null) {
+            if (notifyCollection != null)
+            {
                 notifyCollection.CollectionChanged += notifyCollection_CollectionChanged;
             }
         }
 
-        public void UnSubscribeCollectionChanged(object source) {
+        public void UnSubscribeCollectionChanged(object source)
+        {
             var notifyCollection = source as INotifyCollectionChanged;
-            if(notifyCollection != null) {
+            if (notifyCollection != null)
+            {
                 notifyCollection.CollectionChanged -= notifyCollection_CollectionChanged;
             }
         }
 
-        public void SubscribeItemChanged(object source) {
+        public void SubscribeItemChanged(object source)
+        {
             var collection = source as IList;
-            foreach(object obj in collection) {
+            foreach (object obj in collection)
+            {
                 var castObject = obj as INotifyPropertyChanged;
-                if(castObject != null) {
+                if (castObject != null)
+                {
                     castObject.PropertyChanged += castObject_PropertyChanged;
                 }
             }
         }
 
-        public void UnSubscribeItemChanged(object source) {
+        public void UnSubscribeItemChanged(object source)
+        {
             var collection = source as IList;
-            foreach(object obj in collection) {
+            foreach (object obj in collection)
+            {
                 var castObject = obj as INotifyPropertyChanged;
-                if(castObject != null) {
+                if (castObject != null)
+                {
                     castObject.PropertyChanged -= castObject_PropertyChanged;
                 }
             }
         }
 
-        void notifyCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-            if(e.NewItems != null)
+        void notifyCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
                 SubscribeItemChanged(e.NewItems);
-            if(e.OldItems != null)
+            if (e.OldItems != null)
                 UnSubscribeItemChanged(e.OldItems);
-            (this.AssociatedObject.View as TableView).BestFitColumns();
+            DoBestFit();
         }
 
 
-        void castObject_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-            (this.AssociatedObject.View as TableView).BestFitColumns();
+        void castObject_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            DoBestFit();
         }
     }
 }
