@@ -1,37 +1,48 @@
 <Window
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:mvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
-        xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid" x:Class="E2042.MainWindow"
-        xmlns:local="clr-namespace:E2042"
-        Title="MainWindow" Height="350" Width="525">
+    x:Class="E2042.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
+    xmlns:local="clr-namespace:E2042"
+    Title="MainWindow"
+    Width="525"
+    Height="350">
+    <Window.Resources>
+        <Style TargetType="dxg:GridColumn">
+            <Setter Property="Width" Value="Auto" />
+        </Style>
+    </Window.Resources>
     <Window.DataContext>
-        <local:ViewModel/>
+        <local:ViewModel />
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <dxg:GridControl AutoGenerateColumns="AddNew" ItemsSource="{Binding List}" Name="gridControl1" >
-            <mvvm:Interaction.Behaviors>
-                <local:GridControlFitBehavior/>
-            </mvvm:Interaction.Behaviors>
+        <dxg:GridControl
+            Name="gridControl1"
+            AutoGenerateColumns="AddNew"
+            ItemsSource="{Binding List}">
             <dxg:GridControl.View>
-                <dxg:TableView Name="tableView1"/>
+                <dxg:TableView Name="tableView1" />
             </dxg:GridControl.View>
         </dxg:GridControl>
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Width" Value="110"/>
-                    <Setter Property="Margin" Value="10,0"/>
+                    <Setter Property="Width" Value="110" />
+                    <Setter Property="Margin" Value="10,0" />
                 </Style>
             </StackPanel.Resources>
-            <Button Content="Change ItemsSource"  Command="{Binding ChangeSource}" />
-            <Button Content="Change some item" Command="{Binding ChangeItem}"/>
-            <Button Content="Add some item" Command="{Binding AddNewItem}"/>
-            <Button Content="Delete some item" Command="{Binding DeleteItem}"/>
+            <Button Command="{Binding ChangeSource}" Content="Change ItemsSource" />
+            <Button Command="{Binding ChangeItem}" Content="Change some item" />
+            <Button Command="{Binding AddNewItem}" Content="Add some item" />
+            <Button Command="{Binding DeleteItem}" Content="Delete some item" />
         </StackPanel>
     </Grid>
 </Window>
