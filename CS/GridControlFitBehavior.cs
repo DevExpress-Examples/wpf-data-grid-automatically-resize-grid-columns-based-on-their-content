@@ -1,5 +1,5 @@
 ﻿using DevExpress.Xpf.Grid;
-using DevExpress.Xpf.Mvvm.UI.Interactivity;
+using DevExpress.Mvvm.UI.Interactivity;
 using System;
 using System.Collections;
 using System.Collections.Generic;

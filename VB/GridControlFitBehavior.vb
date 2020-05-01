@@ -1,5 +1,5 @@
 ﻿Imports DevExpress.Xpf.Grid
-Imports DevExpress.Xpf.Mvvm.UI.Interactivity
+Imports DevExpress.Mvvm.UI.Interactivity
 Imports System
 Imports System.Collections
 Imports System.Collections.Generic
