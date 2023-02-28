@@ -1,52 +1,38 @@
-﻿Imports System
-Imports System.Collections.Generic
-Imports System.ComponentModel
-Imports System.Linq
-Imports System.Text
+Imports DevExpress.Mvvm
 
 Namespace E2042
+
     Public Class Task
-        Implements INotifyPropertyChanged
+        Inherits BindableBase
 
-        Private _Num As Integer
-        Private _Name As String
-        Private _IsCompleted As Boolean
-
-        Public Property Num() As Integer
+        Public Property Num As Integer
             Get
-                Return _Num
+                Return GetValue(Of Integer)()
             End Get
+
             Set(ByVal value As Integer)
-                _Num = value
-                NotifyPropertyChanged("Num")
+                SetValue(value)
             End Set
         End Property
 
-
-        Public Property Name() As String
+        Public Property Name As String
             Get
-                Return _Name
+                Return GetValue(Of String)()
             End Get
+
             Set(ByVal value As String)
-                _Name = value
-                NotifyPropertyChanged("Name")
+                SetValue(value)
             End Set
         End Property
 
-        Public Property IsCompleted() As Boolean
+        Public Property IsCompleted As Boolean
             Get
-                Return _IsCompleted
+                Return GetValue(Of Boolean)()
             End Get
+
             Set(ByVal value As Boolean)
-                _IsCompleted = value
-                NotifyPropertyChanged("IsCompleted")
+                SetValue(value)
             End Set
         End Property
-
-        Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
-
-        Private Sub NotifyPropertyChanged(ByVal propertyName As String)
-            RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propertyName))
-        End Sub
     End Class
 End Namespace
