@@ -3,20 +3,33 @@
 [![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/E2042)
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
-*Files to look at*:
 
-* **[MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))**
+# WPF Data Grid - Automatically Resize Grid Columns Based on Their Content
 
-# How to automatically resize grid columns based on their content
+Set the column's [Width](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.BaseColumn.Width) property to `Auto` to make the [GridControl](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.GridControl) automatically recalculate the optimal width for this column based on its visible content:
 
-You can automatically change column widths based on their content by setting the [BaseColumn.Width](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.BaseColumn.Width?v=20.1) property to `Auto`.
+![image](https://user-images.githubusercontent.com/65009440/221838472-4471dd29-12e1-48c7-8abb-e9addc80c454.png)
 
-In this example, we apply a style to grid columns [implicitly](https://docs.microsoft.com/en-us/dotnet/desktop-wpf/fundamentals/styles-templates-create-apply-style#apply-a-style-implicitly) and set `Width` there:
+This example contains the following [implicit style](https://learn.microsoft.com/en-us/dotnet/desktop/wpf/controls/how-to-create-apply-style#apply-a-style-implicitly) that applies the specified setting to all columns:
 
-```xml
+```xaml
 <Window.Resources>
     <Style TargetType="dxg:GridColumn">
-        <Setter Property="Width" Value="Auto" />
+        <Setter Property="Width" Value="Auto"/>
     </Style>
 </Window.Resources>
 ```
+
+## Files to Review
+
+* [MainWindow.xaml](./CS/MainWindow.xaml) (VB: [MainWindow.xaml](./VB/MainWindow.xaml))
+* [ViewModel.cs](./CS/ViewModel.cs) (VB: [ViewModel.vb](./VB/ViewModel.vb))
+
+## Documentation
+
+* [Move and Resize Columns](https://docs.devexpress.com/WPF/6296/controls-and-libraries/data-grid/grid-view-data-layout/columns-and-card-fields/move-and-resize-columns)
+* [BaseColumn.Width](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.BaseColumn.Width)
+
+## More Examples
+
+* [WPF Data Grid - Specify the Column's Relative Width](https://github.com/DevExpress-Examples/how-to-set-gridcolumns-relative-width-t155660)
