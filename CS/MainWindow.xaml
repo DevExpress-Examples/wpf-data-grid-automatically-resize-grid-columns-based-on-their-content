@@ -5,44 +5,40 @@
     xmlns:dxg="http://schemas.devexpress.com/winfx/2008/xaml/grid"
     xmlns:local="clr-namespace:E2042"
     Title="MainWindow"
-    Width="525"
+    Width="600"
     Height="350">
     <Window.Resources>
         <Style TargetType="dxg:GridColumn">
-            <Setter Property="Width" Value="Auto" />
+            <Setter Property="Width" Value="Auto"/>
         </Style>
     </Window.Resources>
+    
     <Window.DataContext>
-        <local:ViewModel />
+        <local:ViewModel/>
     </Window.DataContext>
+    
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="30" />
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <dxg:GridControl
-            Name="gridControl1"
-            AutoGenerateColumns="AddNew"
-            ItemsSource="{Binding List}">
-            <dxg:GridControl.View>
-                <dxg:TableView Name="tableView1" />
-            </dxg:GridControl.View>
-        </dxg:GridControl>
-        <StackPanel
-            Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Orientation="Horizontal">
+        
+        <dxg:GridControl AutoGenerateColumns="AddNew" ItemsSource="{Binding List}"/>
+        
+        <StackPanel Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
             <StackPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Width" Value="110" />
-                    <Setter Property="Margin" Value="10,0" />
+                    <Setter Property="Width" Value="140"/>
+                    <Setter Property="Margin" Value="5,0"/>
                 </Style>
             </StackPanel.Resources>
-            <Button Command="{Binding ChangeSource}" Content="Change ItemsSource" />
-            <Button Command="{Binding ChangeItem}" Content="Change some item" />
-            <Button Command="{Binding AddNewItem}" Content="Add some item" />
-            <Button Command="{Binding DeleteItem}" Content="Delete some item" />
+            <Button Command="{Binding ChangeSourceCommand}" Content="Reset items"/>
+            <Button Command="{Binding ChangeItemCommand}" Content="Change the first item"/>
+            <Button Command="{Binding AddNewItemCommand}" Content="Add a new item"/>
+            <Button Command="{Binding DeleteItemCommand}" Content="Delete the last item"/>
         </StackPanel>
     </Grid>
 </Window>
