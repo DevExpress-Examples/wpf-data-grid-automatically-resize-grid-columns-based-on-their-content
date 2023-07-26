@@ -29,7 +29,3 @@ This example contains the following [implicit style](https://learn.microsoft.com
 
 * [Move and Resize Columns](https://docs.devexpress.com/WPF/6296/controls-and-libraries/data-grid/grid-view-data-layout/columns-and-card-fields/move-and-resize-columns)
 * [BaseColumn.Width](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.BaseColumn.Width)
-
-## More Examples
-
-* [WPF Data Grid - Specify the Column's Relative Width](https://github.com/DevExpress-Examples/how-to-set-gridcolumns-relative-width-t155660)
