@@ -7,7 +7,8 @@
     <ProjectGuid>{719F437E-8259-4D8F-8096-EF313ECBFDB0}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>E2042</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
