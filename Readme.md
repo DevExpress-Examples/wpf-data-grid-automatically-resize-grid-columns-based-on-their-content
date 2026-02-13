@@ -22,7 +22,7 @@ In this example, we apply a style to grid columns [implicitly](https://docs.micr
 </Window.Resources>
 ```
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-automatically-resize-grid-columns-based-on-their-content&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-automatically-resize-grid-columns-based-on-their-content&~~~was_helpful=no)
 
