@@ -31,7 +31,7 @@ This example contains the following [implicit style](https://learn.microsoft.com
 * [Move and Resize Columns](https://docs.devexpress.com/WPF/6296/controls-and-libraries/data-grid/grid-view-data-layout/columns-and-card-fields/move-and-resize-columns)
 * [BaseColumn.Width](https://docs.devexpress.com/WPF/DevExpress.Xpf.Grid.BaseColumn.Width)
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-automatically-resize-grid-columns-based-on-their-content&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=wpf-data-grid-automatically-resize-grid-columns-based-on-their-content&~~~was_helpful=no)
 
